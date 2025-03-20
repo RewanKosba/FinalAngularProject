@@ -1,0 +1,48 @@
+<div class="container-products">
+  <div class="card">
+      <div class="img-container">
+          <img src="{{item.thumbnail}}" alt="" class="img-main" style="height: 465px; margin-bottom: 10px;">
+          @for(i of item.images; track i){
+            <img src="{{i}}" alt="Avatar">
+          }
+      </div>
+
+      <div class="content">
+          <div class="main">
+              <h3 style="font-weight: bold;">{{item.title}}</h3>
+              <h3 style="width: 450px; font-size: 13px; font-weight: normal;" class="description">{{item.description}}</h3>
+          </div>
+          <div class="stars">
+            <div class="full-stars" [ngStyle]="{'width': (item.rating / 5) * 100 + '%'}">
+              <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill"></i>
+            </div>
+            <div class="empty-stars">
+              <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill"></i>
+            </div>
+          </div>
+
+          <hr>
+          <h3 style="padding-top: 20px; padding-bottom: 20px;"> Price : {{item.price | currency}} </h3>
+          <span *ngIf="item.stock > 0" class="badge badge-success">in stock</span>
+          <span *ngIf="item.stock === 0" class="badge badge-danger">out of stock</span>
+          <hr>
+          <div class="price" style="display: flex; align-items: center; gap: 10px;">
+            <div class="input-group" >
+              <button class="btn " type="button" (click)="decrease()">−</button>
+              <input type="text" class="form-control text-center" [(ngModel)]="quantity" readonly>
+              <button class="btn " type="button" (click)="increase()">+</button>
+            </div>  
+            <div class="input-price">
+              <span>Only <span style="color: #28a745; font-weight: bold;">{{item.stock}}</span> items left !!</span>
+            </div>
+          </div> 
+          <h3 style="font-size: 14px; margin-bottom: 20px;"><span style="color: #28a745;">Total price is :</span>  {{getTotalPrice()}}</h3>       
+          <hr>
+          <div class="last">
+            <button style="font-size: 20px; margin-top: 20px; margin-right: 10px; color: white; background-color: #28a745; outline: none; padding: 5px 30px; border-radius:20px ; border: none;">Buy Now</button>
+            <button style="font-size: 20px; margin-top: 20px; margin-right: 10px; color: #28a745; background-color: white;  outline: none; padding: 5px 30px; border-radius:20px ; border-color: #28a745;">Add to Cart</button>
+
+          </div>
+      </div>
+    </div>
+</div>

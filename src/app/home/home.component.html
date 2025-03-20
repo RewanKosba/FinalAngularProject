@@ -1,0 +1,32 @@
+<h1>Welcome to our shopping website , start browsing....</h1>
+<div class="container-products">
+  @for(item of products.products ; track item.id){
+    <a style="text-decoration: none;" [routerLink]='["/MovieDetails", item.id]'>
+      <div class="card" style="width: 18rem;">
+        <div class="img-container">
+          <span *ngIf="item.stock > 0" class="badge badge-success">in stock</span>
+          <span *ngIf="item.stock === 0" class="badge badge-danger">out of stock</span>
+          <img src="{{item.thumbnail}}" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+          <div class="first-title d-flex m-2" style="gap: 45px;">
+            <h5 class="card-title">{{item.title}}</h5>
+            <h5 class="rating">{{item.price | currency}}</h5>
+          </div>
+          <p class="card-text">{{item.description}}</p>
+          
+          <div class="stars">
+            <div class="full-stars" [ngStyle]="{'width': (item.rating / 5) * 100 + '%'}">
+              <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill"></i>
+            </div>
+            <div class="empty-stars">
+              <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill"></i>
+            </div>
+          </div>
+  
+          <a style="display: block;" href="#" class="btn ">Go somewhere</a>
+        </div>
+      </div>
+    </a>
+  }
+</div>

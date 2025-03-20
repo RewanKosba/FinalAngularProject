@@ -1,0 +1,18 @@
+navbar-brand {
+  color: green !important;
+  font-weight: bold !important;
+}
+.active-link {
+  color: green !important;
+}
+.navbar-nav {
+  justify-content: end !important;
+}
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: flex !important
+;
+        flex-basis: auto;
+        justify-content: end;
+    }
+}
