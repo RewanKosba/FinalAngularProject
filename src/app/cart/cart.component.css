@@ -1,0 +1,79 @@
+.container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.product-details {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+.remove-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cart-item td {
+  vertical-align: middle;
+}
+
+
+.input-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 120px;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #eee;
+}
+.input-group  input {
+  background-color: #eee;
+}
+
+.input-group .form-control {
+  width: 40px;
+  text-align: center;
+  border: none;
+  font-weight: bold;
+}
+
+.input-group .btn {
+  border-radius: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}

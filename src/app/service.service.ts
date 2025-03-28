@@ -1,73 +1,47 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { ServiceService } from '../service.service';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-@Component({
-  selector: 'app-movies-details',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './movies-details.component.html',
-  styleUrl: './movies-details.component.css'
+@Injectable({
+  providedIn: 'root'
 })
-export class MoviesDetailsComponent implements OnInit {
-  item: any;
-  quantity: number = 1;
-  errorMessage: string = '';
+export class ServiceService {
 
-  constructor(private route: ActivatedRoute, private productService: ServiceService) {}
+  private pageNumberContent = new BehaviorSubject<number>(1)
+  products!:Observable<any>
+  private apiUrl = 'https://fakestoreapi.com/products';
 
-  ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-
-    this.productService.getProductById(id).subscribe(
-      (data) => {
-        this.item = data;
-      },
-      (error) => {
-        this.errorMessage = 'error';
-        console.error(error);
-      }
-    );
+  constructor(private http: HttpClient) { 
+    this.products
   }
 
-  increase() {
-    this.quantity++;
+  getAllProducts(pageNumber: number): Observable<any> {
+    return this.http.get(this.apiUrl);
   }
 
-  decrease() {
-    if (this.quantity > 1) {
-      this.quantity--;
-    }
+  getProductById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  getTotalPrice(): number {
-    return this.quantity * (this.item?.price || 0);
-  }
-
-  //cart 
+  //cart part 
+  private cart: any[] = [];
+  
   addToCart(product: any) {
-    this.productService.addToCart(product);
-    alert('Product added to cart!');
+    this.cart.push(product);
+  }
+
+  getCartItems() {
+    return this.cart;
   }
 }
 
-//===============
+// import { Injectable } from '@angular/core';
 
-// import { CommonModule } from '@angular/common';
-// import { Component } from '@angular/core';
-// import { FormsModule, NgModel } from '@angular/forms';
-// import { ActivatedRoute } from '@angular/router';
-
-// @Component({
-//   selector: 'app-movies-details',
-//   imports: [CommonModule , FormsModule],
-//   templateUrl: './movies-details.component.html',
-//   styleUrl: './movies-details.component.css'
+// @Injectable({
+//   providedIn: 'root'
 // })
-// export class MoviesDetailsComponent {
-//   products: any = {
+// export class ServiceService {
+//   public products= {
 //     "products": [
 //       {
 //         "id": 1,
@@ -501,7 +475,7 @@ export class MoviesDetailsComponent implements OnInit {
 //         "price": 89.99,
 //         "discountPercentage": 17.44,
 //         "rating": 3.31,
-//         "stock": 91,
+//         "stock": 0,
 //         "tags": [
 //           "fragrances",
 //           "perfumes"
@@ -1288,30 +1262,8 @@ export class MoviesDetailsComponent implements OnInit {
 //     "limit": 30
 //   }
 
-//   item: any
-//   constructor(private route: ActivatedRoute){
-//     let id: number = Number(this.route.snapshot.params['id']);
-
-//     let item: any = this.products.products.filter((p: any) => p.id === id);
-//     if(item.length !== 0) {
-//       this.item = item[0];
-//     }
-
+//   constructor() { }
+//   getAllProducts() {
+//     return this.products;
 //   }
-//   quantity: number = 1;
-
-// increase() {
-//   this.quantity++;
-// }
-
-// decrease() {
-//   if (this.quantity > 1) {
-//     this.quantity--;
-//   }
-//   }
-
-//   getTotalPrice(): number {
-//     return this.quantity * this.item.price;
-//   }
-
 // }

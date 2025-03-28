@@ -1,0 +1,52 @@
+<h2 style="margin-top:15px; text-align: center ; color: #28a745; font-size: 35px; font-weight: bold;">Your Cart </h2>
+
+<div *ngIf="cartItems.length === 0">
+  <p style="font-size: 24px; text-align: center; padding: 15px;">Your cart is empty....</p>
+</div>
+
+<!-- <div *ngFor="let item of cartItems" class="cart-item">
+  <h3>{{ item.title }}</h3>
+  <p>Price: {{ item.price | currency }}</p> 
+  <img [src]="item.image" alt="{{ item.title }}" width="100">
+</div> -->
+
+<div class="container">
+  <table>
+      <thead>
+          <tr>
+              <th>Description</th>
+              <th>Quantity</th>
+              <th>Remove</th>
+              <th>Price</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of cartItems" class="cart-item">
+              <td style="display: flex; gap: 10px;">
+                  <img [src]="item.image" alt="{{ item.title }}">
+                  <div class="product-details">
+                      <h3 style="font-size: 20px;">{{ item.title }}</h3>
+                      <p>Product Code: {{ item.id }}</p>
+                  </div>
+              </td>
+              <td>
+                <div class="input-group" >
+                  <button class="btn " type="button" (click)="decrease()">−</button>
+                  <input type="text" class="form-control text-center" [(ngModel)]="quantity" readonly>
+                  <button class="btn " type="button" (click)="increase()">+</button>
+                </div>
+              </td>
+              <td>
+                <button class="remove-btn" (click)="removeItem(item)">x</button>
+              </td>
+              <td>{{ getTotalPrice() | currency:'GBP' }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+
+<div>
+<h3 style=" margin-left: 450px; padding:  10px; background-color: #28a745; color: white; border-radius: 22px; width: 400px; font-size: 25px; text-align: center;">Total: {{ getTotalPrice() | currency }}</h3>
+</div>

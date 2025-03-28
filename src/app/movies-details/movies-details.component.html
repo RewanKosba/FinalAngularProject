@@ -1,7 +1,7 @@
 <div class="container-products">
   <div class="card">
       <div class="img-container">
-          <img src="{{item.thumbnail}}" alt="" class="img-main" style="height: 465px; margin-bottom: 10px;">
+          <img src="{{item.image}}" alt="" class="img-main" style="height: 465px; margin-bottom: 10px;">
           @for(i of item.images; track i){
             <img src="{{i}}" alt="Avatar">
           }
@@ -31,17 +31,16 @@
               <button class="btn " type="button" (click)="decrease()">−</button>
               <input type="text" class="form-control text-center" [(ngModel)]="quantity" readonly>
               <button class="btn " type="button" (click)="increase()">+</button>
-            </div>  
+            </div>
             <div class="input-price">
               <span>Only <span style="color: #28a745; font-weight: bold;">{{item.stock}}</span> items left !!</span>
             </div>
-          </div> 
-          <h3 style="font-size: 14px; margin-bottom: 20px;"><span style="color: #28a745;">Total price is :</span>  {{getTotalPrice()}}</h3>       
+          </div>
+          <h3 style="font-size: 14px; margin-bottom: 20px;"><span style="color: #28a745;">Total price is :</span>  {{getTotalPrice()}}</h3>
           <hr>
           <div class="last">
             <button style="font-size: 20px; margin-top: 20px; margin-right: 10px; color: white; background-color: #28a745; outline: none; padding: 5px 30px; border-radius:20px ; border: none;">Buy Now</button>
-            <button style="font-size: 20px; margin-top: 20px; margin-right: 10px; color: #28a745; background-color: white;  outline: none; padding: 5px 30px; border-radius:20px ; border-color: #28a745;">Add to Cart</button>
-
+            <button (click)="addToCart(item)" style="font-size: 20px; margin-top: 20px; margin-right: 10px; color: #28a745; background-color: white;  outline: none; padding: 5px 30px; border-radius:20px ; border-color: #28a745;">Add to Cart</button>
           </div>
       </div>
     </div>

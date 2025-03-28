@@ -7,10 +7,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
+import { CartComponent } from './cart/cart.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HomeComponent , RouterOutlet , NavBarComponent , MoviesComponent ,MoviesDetailsComponent , LoginComponent , RegisterComponent , NotfoundComponent],
+  imports: [HomeComponent , RouterOutlet , NavBarComponent , MoviesComponent ,MoviesDetailsComponent , LoginComponent , RegisterComponent , NotfoundComponent , CartComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

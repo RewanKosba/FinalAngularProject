@@ -4,12 +4,14 @@ import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
 import { MoviesDetailsComponent } from './movies-details/movies-details.component';
+import { CartComponent } from './cart/cart.component';
 
 export const routes: Routes = [
   {path:'home',component:HomeComponent , title:"home page "},
   { path: 'Login', component: LoginComponent, title: "login" },
   {path:'MovieDetails/:id',component:MoviesDetailsComponent , title: "Details"},
-  {path:'Register',component:RegisterComponent , title:  "register"},
+  { path: 'Register', component: RegisterComponent, title: "register" },
+  {path:'cart',component:CartComponent , title:  "cart"},
   {path:'**',component:NotfoundComponent},
 
 ];
