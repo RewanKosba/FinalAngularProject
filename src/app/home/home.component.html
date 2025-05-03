@@ -1,9 +1,29 @@
-<h1>Welcome to our shopping website , start browsing....</h1>
-<div class="container-products">
+<!-- start landing -->
+<div class="landing">
+  <div class="container">
+    <div class="text" style="margin-top: 70px;">
+      <h1 style="color: #28a745; font-weight: bold;">Welcome , To Our Website </h1>
+      <p style="margin-left: 40px;">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, incidunt?
+        Lorem ipsum dolor sit amet.
+      </p>
+      <button  class="btn" style="border-radius: 0; margin-left: 150px; margin-top: 40px; font-size: 25px; color: white; background-color: #28a745;">show products </button>
+    </div>
+    <div class="image">
+      <img class="homeImg" src="Georgia Fowler for Fashion Quarterly New Zealand September 2018.jpeg" alt="" />
+    </div>
+  </div>
+  <a href="#articles" class="go-down">
+    <i class="fas fa-angle-double-down fa-2x"></i>
+  </a>
+</div>
+
+
+<div class="container-products" id="">
   <!-- <button (click)="nextPAge()">Next</button>
   <button (click)="prevPage()">Last</button> -->
   @for(item of products ; track item.id){
-    <a style="text-decoration: none;" [routerLink]='["/MovieDetails", item.id]'>
+    <a class="oneProduct" style="text-decoration: none;" [routerLink]='["/MovieDetails", item.id]'>
       <div class="card" style="width: 18rem;">
         <div class="img-container">
           <span *ngIf="item.stock > 0" class="badge badge-success">in stock</span>
@@ -12,13 +32,13 @@
         </div>
         <div class="card-body">
           <div class="first-title d-flex m-2" style="gap: 45px;">
-            <h5 class="card-title">{{item.title}}</h5>
-            <h5 class="rating">{{item.price | currency}}</h5>
+            <h5 style="color: #28a745;" class="card-title">{{item.title}}</h5>
+            <h5  class="rating">{{item.price | currency}}</h5>
           </div>
           <p class="card-text">{{item.description}}</p>
 
           <div class="stars">
-            <div class="full-stars" [ngStyle]="{'width': (item.rating / 5) * 100 + '%'}">
+            <div class="full-stars" [ngStyle]="{'width': ((item.rating || 0) / 5) * 100 + '%'}">
               <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill"></i>
             </div>
             <div class="empty-stars">
@@ -27,9 +47,14 @@
           </div>
 
           <a (click)="addToCart(item)" style="display: block;" href="#" class="btn ">Add to cart</a>
-        
+
         </div>
       </div>
     </a>
   }
 </div>
+
+
+<footer>
+        <p>Copy Right 2025 © By <a href="#">Theme-fair</a> All Rights Reserved</p>
+</footer>

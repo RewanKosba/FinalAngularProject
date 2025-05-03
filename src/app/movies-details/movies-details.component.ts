@@ -16,7 +16,7 @@ export class MoviesDetailsComponent implements OnInit {
   quantity: number = 1;
   errorMessage: string = '';
 
-  constructor(private route: ActivatedRoute, private productService: ServiceService) {}
+  constructor(private route: ActivatedRoute, private productService: ServiceService) { }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -47,11 +47,18 @@ export class MoviesDetailsComponent implements OnInit {
   }
 
   //cart 
+  //   addToCart(product: any) {
+  //     this.productService.addToCart(product);
+  //     alert('Product added to cart!');
+  //   }
+  // }
   addToCart(product: any) {
-    this.productService.addToCart(product);
+    const item = { ...product, quantity: this.quantity };
+    this.productService.addToCart(item);
     alert('Product added to cart!');
   }
 }
+
 
 //===============
 

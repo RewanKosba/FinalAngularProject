@@ -1,3 +1,89 @@
+/* start landing */
+
+.landing {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  background-color: #f4f4f4;
+  height: calc(100vh - 140px) ;
+  box-shadow: 1px 1px 5px 0px #28a745;
+
+}
+
+
+.landing .container {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 120px;
+}
+
+.landing .container .text {
+  flex: 1;
+}
+@media (max-width: 991px) {
+  .landing .container .text {
+    text-align: center;
+  }
+}
+.landing .container .text h1 {
+  margin-bottom: 0px;
+  letter-spacing: -2px;
+  font-size: 55px;
+  font-family: "Tagesschrift", system-ui;
+}
+@media (max-width: 767px) {
+  .landing .container .text h1 {
+    font-size: 28px;
+  }
+}
+.landing .container .text p {
+  font-size: 20px;
+  line-height: 1.7;
+  margin: 10px 0 0  10px;
+  color: #403e3e;
+  max-width: 500px;
+}
+@media (max-width: 991px) {
+  .landing .container .text p {
+    margin: 10px auto;
+  }
+}
+@media (max-width: 767px) {
+  .landing .container .text p {
+    font-size: 18px;
+  }
+}
+.landing .container .image img {
+  position: relative;
+  width: 600px;
+}
+@media (max-width: 991px) {
+  .landing .container .image img {
+    display: none;
+  }
+}
+.landing .go-down {
+  color: #28a745;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.3s;
+}
+.landing .go-down:hover {
+  color:#28a745;
+}
+
+.homeImg {
+  margin-top: 210px;
+  height: 580px;
+}
+/* end landing */
+
+
+
+
 h1 {
   font-size: 14px;
   margin: 25px;
@@ -7,6 +93,9 @@ h1 {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 20px;
   gap: 10px;
+}
+.oneProduct {
+  box-shadow: 2px 2px 2px #dad6d6;
 }
 .img-container {
   /* background-color: #eee; */
@@ -70,5 +159,22 @@ h1 {
 .badge-danger {
   background-color: #dc3545;
   color: white;
+}
+
+
+
+footer {
+  background-color: #eee;
+  color: #403e3e;
+  padding: 30px ;
+  padding-bottom: 15px;
+  text-align: center;
+  margin-top: auto;
+
+}
+
+footer a {
+  color: #28a745;
+  text-decoration: none;
 }
 

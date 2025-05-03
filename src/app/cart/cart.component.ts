@@ -11,7 +11,6 @@ import { ServiceService } from '../service.service';
   styleUrl: './cart.component.css',
 })
 export class CartComponent {
-  quantity: number = 1;
    //cart 
   cartItems: any[] = [];
   constructor(
@@ -25,23 +24,25 @@ export class CartComponent {
   }
 
 
-  increase() {
-    this.quantity++;
-  }
 
-  decrease() {
-    if (this.quantity > 1) {
-      this.quantity--;
+  getTotalPrice(): number {
+    return this.cartItems.reduce((total, item) => total + item.price * (item.quantity || 1), 0);
+  }
+  
+  increase(item: any) {
+    item.quantity = (item.quantity || 1) + 1;
+  }
+  
+  decrease(item: any) {
+    if (item.quantity > 1) {
+      item.quantity--;
     }
   }
+  
 
-    getTotalPrice(): number {
-    return this.cartItems.reduce((total, item) => total + item.price, 0);
-  }
 
   removeItem(item: any) {
     this.cartItems = this.cartItems.filter(cartItem => cartItem.id !== item.id);
   }
   
 }
-
